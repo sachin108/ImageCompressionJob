@@ -5,23 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Processing System</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Home.css' %}">
 </head>
 <body>
     <header>
-        <h1>Image Processing System</h1>
-        <nav>
-            <a href="{% url 'home' %}">Home</a>
-            <a href="{% url 'upload_csv' %}">Upload CSV</a>
-        </nav>
+        <div class="container">
+            <h1>Image Processing System</h1>
+            <nav>
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'upload_csv' %}">Upload CSV</a>
+                <a href="{% url 'product_list' %}">Processed Images</a>
+            </nav>
+        </div>
     </header>
     <main>
-        <h2>Welcome to the Image Processing System</h2>
-        <p>Use this system to upload CSV files containing image URLs, process these images, and track the status of your requests.</p>
-        <a href="{% url 'upload_csv' %}" class="button">Upload CSV File</a>
+        <div class="container">
+            <h2>Welcome to the Image Processing System</h2>
+            <p>Upload CSV files containing image URLs to process the images and track request statuses.</p>
+            <div class="button-group">
+                <a href="{% url 'upload_csv' %}" class="button">Upload CSV File</a>
+                <form action="{% url 'check_status' 'request_id' %}" method="get" class="search-form">
+                    <input type="text" name="request_id" placeholder="Enter Request ID" required>
+                    <button type="submit" class="button search-button">Check Status</button>
+                </form>
+            </div>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2024 Image Processing System</p>
-    </footer>
 </body>
 </html>

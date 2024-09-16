@@ -16,7 +16,7 @@ body {
 }
 
 header {
-    background-color: #4A90E2;  /* Soft blue */
+    background-color: #4A90E2;  
     color: #fff;
     padding: 20px 0;
     text-align: center;
@@ -33,7 +33,7 @@ h2 {
     margin: 20px 0 10px;
     font-size: 1.8em;
     color: #333;
-    border-bottom: 3px solid #E94E77;  /* Soft red */
+    border-bottom: 3px solid #E94E77;  
     padding-bottom: 5px;
 }
 
@@ -81,3 +81,21 @@ footer p {
     font-size: 0.9em;
 }
 
+.home-button {
+    position: fixed;   
+    top: 20px;         
+    left: 20px;        
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    z-index: 1000;     
+}
+
+.home-button:hover {
+    background-color: #0056b3;
+}

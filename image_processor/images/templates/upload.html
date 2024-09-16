@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Processing - Upload CSV</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Home.css' %}">
 </head>
 <body>
+    <a href="{% url 'home' %}" class="home-button">Home</a>    
     <header>
         <h1>Image Processing System</h1>
         <nav>
@@ -23,8 +24,5 @@
             <button type="submit">Submit</button>
         </form>
     </main>
-    <footer>
-        <p>&copy; 2024 Image Processing System</p>
-    </footer>
 </body>
 </html>
