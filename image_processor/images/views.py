@@ -6,8 +6,15 @@ from celery.result import AsyncResult
 from .tasks import process_images_async
 from .models import ImageRequest, Product, ProcessedImage
 import logging
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 logger = logging.getLogger(__name__)
+
+def home(request):
+    return render(request, 'home.html')
+
+
 
 def process_csv(csv_file):
     data = []

@@ -4,24 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Processing - Upload CSV</title>
+    <title>Image Processing System</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <header>
         <h1>Image Processing System</h1>
         <nav>
+            <a href="{% url 'home' %}">Home</a>
             <a href="{% url 'upload_csv' %}">Upload CSV</a>
         </nav>
     </header>
     <main>
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <h2>Upload CSV File</h2>
-            <label for="csv_file">Select CSV File:</label>
-            <input type="file" name="csv_file" accept=".csv" required>
-            <button type="submit">Submit</button>
-        </form>
+        <h2>Welcome to the Image Processing System</h2>
+        <p>Use this system to upload CSV files containing image URLs, process these images, and track the status of your requests.</p>
+        <a href="{% url 'upload_csv' %}" class="button">Upload CSV File</a>
     </main>
     <footer>
         <p>&copy; 2024 Image Processing System</p>

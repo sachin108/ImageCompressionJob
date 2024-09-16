@@ -1,15 +1,30 @@
-<h1>Products and Processed Images</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products and Processed Images</title>
+    <link rel="stylesheet" href="{% static 'css/Products.css' %}">
+</head>
+    <body>
+        <header>
+            <h1>Products and Processed Images</h1>
+        </header>
+        <div class="container">
+            <h2>Products</h2>
+            <ul>
+                {% for product in products %}
+                    <li>{{ product.serial_number }}: {{ product.name }}</li>
+                {% endfor %}
+            </ul>
 
-<h2>Products</h2>
-<ul>
-    {% for product in products %}
-        <li>{{ product.serial_number }}: {{ product.name }}</li>
-    {% endfor %}
-</ul>
-
-<h2>Processed Images</h2>
-<ul>
-    {% for image in images %}
-        <li>{{ image.product.name }}: <a href="{{ image.original_url }}">Original Image</a> - Processed Image: <a href="{{ image.processed_image.url }}">View Processed</a></li>
-    {% endfor %}
-</ul>
+            <h2>Processed Images</h2>
+            <ul>
+                {% for image in images %}
+                    <li>{{ image.product.name }}: <a href="{{ image.original_url }}">Original Image</a> - Processed Image: <a href="{{ image.processed_image.url }}">View Processed</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </body>
+</html>
