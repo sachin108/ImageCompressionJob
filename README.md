@@ -24,14 +24,6 @@ This Django-based system processes image data provided through a CSV file and co
 - Django 3.0+
 - Celery 5.0+
 - Amazon SQS for message queue
-- PostgreSQL (or any preferred database)
+- Any preferred database
 - `Pillow` for image handling
 - `boto3` for Amazon SQS integration
-
-## Setup
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/your-username/image-processing-webhook.git
-cd image-processing-webhook
