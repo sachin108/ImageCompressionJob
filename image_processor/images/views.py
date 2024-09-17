@@ -53,19 +53,29 @@ def upload_csv(request):
                     name=product_name,
                     image_request=image_request
                 )
-                process_images_async(product, image_urls.split(','))
+                # Pass the product_id and image_urls to the Celery task
+                process_images_async.delay(product.id, image_urls.split(','))
+            
             return JsonResponse({'request_id': request_id}, status=202)
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=400)
+    
     return render(request, 'upload.html')
 
-def check_status(request, request_id):
-    try:
-        image_request = ImageRequest.objects.get(request_id=request_id)
-        return JsonResponse({'status': image_request.status}, status=200)
-    except ImageRequest.DoesNotExist:
-        return JsonResponse({'error': 'Invalid request ID'}, status=404)
 
+def check_status(request):
+    request_id = request.GET.get('request_id')
+    if not request_id:
+        return JsonResponse({'error': 'Request ID is required'}, status=400)
+    
+    task_result = AsyncResult(str(request_id))
+    if task_result.state == 'PENDING':
+        response = {'status': 'Pending'}
+    elif task_result.state == 'SUCCESS':
+        response = {'status': 'Completed', 'details': task_result.info}
+    else:
+        response = {'status': task_result.state}
+    return JsonResponse(response)
 
 def product_list(request):
     products = Product.objects.all()
